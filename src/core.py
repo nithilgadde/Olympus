@@ -5,6 +5,21 @@ SCREEN_W, SCREEN_H = 128, 128
 SCALE = 5
 WINDOW_W, WINDOW_H = SCREEN_W * SCALE, SCREEN_H * SCALE
 
+class Screen:
+
+    def __init__(self, w, h):
+        self.w = w
+        self.h = h
+        self.fb = np.zeros((h, w, 3), dtype=np.uint8)
+
+    def cls(self, color):
+        self.fb[:, :] = color
+
+    def pset(self, x, y, color):
+        if 0 <= x < self.w and 0 <= y < self.h:
+            self.fb[y, x] = color
+
+
 sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO)
 
 window = sdl2.SDL_CreateWindow(
