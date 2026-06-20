@@ -40,9 +40,17 @@ while running:
                 running = False
     
     #test new code in here
+    # screen.cls(BLACK)
+    # screen.circfill(40, 64, 20, RED)
+    # screen.circ(90, 64, 25, YELLOW)
+
     screen.cls(BLACK)
-    screen.rectfill(20, 20, 70, 60, RED)
-    screen.rect(40, 40, 100, 100, YELLOW)
+    cx, cy = 64, 64
+    for angle in range(0, 360, 15):
+        rad = math.radians(angle)
+        x = cx + int(50 * math.cos(rad))
+        y = cy + int(50 * math.sin(rad))
+        screen.line(cx, cy, x, y, 8 + (angle // 45) % 8)
 
     rgb = screen.to_rgb()
     sdl2.SDL_UpdateTexture(texture, None, ctypes.c_void_p(rgb.ctypes.data), SCREEN_W * 3)

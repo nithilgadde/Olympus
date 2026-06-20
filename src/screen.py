@@ -50,5 +50,48 @@ class Screen:
         self.line(x0, y0, x0, y1, color)
         self.line(x1, y0, x1, y1, color)
 
+    def circ(self, cx, cy, r, color):
+        cx, cy, r = int(cx), int(cy), int(r)
+        if r < 0:
+            return
+        x = r
+        y = 0
+        err = 1 - r
+        while x >= y:
+            self.pset(cx + x, cy + y, color)
+            self.pset(cx + y, cy + x, color)
+            self.pset(cx - y, cy + x, color)
+            self.pset(cx - x, cy + y, color)
+            self.pset(cx - x, cy - y, color)
+            self.pset(cx - y, cy - x, color)
+            self.pset(cx + y, cy - x, color)
+            self.pset(cx + x, cy - y, color)
+            y += 1
+            if err < 0:
+                err += 2 * y + 1
+            else:
+                x -= 1
+                err += 2 * (y - x) + 1
+    
+    def circfill(self, cx, cy, r, color):
+        cx, cy, r = int(cx), int(cy), int(r)
+        if r < 0:
+            return
+        x = r
+        y = 0
+        err = 1 - r
+        while x >= y:
+              # instead of plotting 8 edge points, draw horizontal spans between them
+            self.rectfill(cx - x, cy + y, cx + x, cy + y, color)
+            self.rectfill(cx - x, cy - y, cx + x, cy - y, color)
+            self.rectfill(cx - y, cy + x, cx + y, cy + x, color)
+            self.rectfill(cx - y, cy - x, cx + y, cy - x, color)
+            y += 1
+            if err < 0:
+                err += 2 * y + 1
+            else:
+                x -= 1
+                err += 2 * (y - x) + 1
+
     def to_rgb(self):
         return np.ascontiguousarray(PALETTE[self.fb])
