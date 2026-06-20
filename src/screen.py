@@ -1,5 +1,17 @@
 import numpy as np
 from palette import PALETTE
+import ctypes, sdl2
+
+LEFT, RIGHT, UP, DOWN, O, X = 0, 1, 2, 3, 4, 5
+
+_SCANCODES = [
+    sdl2.SDL_SCANCODE_LEFT,
+    sdl2.SDL_SCANCODE_RIGHT,
+    sdl2.SDL_SCANCODE_UP,
+    sdl2.SDL_SCANCODE_DOWN,
+    sdl2.SDL_SCANCODE_Z,
+    sdl2.SDL_SCANCODE_X,
+]
 
 class Screen:
 
@@ -7,6 +19,8 @@ class Screen:
         self.w = w
         self.h = h
         self.fb = np.zeros((h, w), dtype=np.uint8)
+        self._btn = [False] * 6
+        self._prev = [False] * 6
 
     def cls(self, color):
         self.fb[:, :] = color
@@ -95,3 +109,58 @@ class Screen:
 
     def to_rgb(self):
         return np.ascontiguousarray(PALETTE[self.fb])
+    
+    def btn(self, i):
+        return self._btn[i]
+    
+    def btnp(self, i):
+        return self._btn[i] and not self._prev[i]
+    
+    def run(self, update, draw, scale=5, title=b"Olympus"):
+        sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO)
+        win_w, win_h = self.w * scale, self.h * scale
+
+        window = sdl2.SDL_CreateWindow(
+            title,
+            sdl2.SDL_WINDOWPOS_CENTERED, sdl2.SDL_WINDOWPOS_CENTERED,
+            win_w, win_h,
+            sdl2.SDL_WINDOW_SHOWN)
+
+        renderer = sdl2.SDL_CreateRenderer(window, -1, sdl2.SDL_RENDERER_ACCELERATED)
+        sdl2.SDL_SetHint(sdl2.SDL_HINT_RENDER_SCALE_QUALITY, b"0")
+        texture = sdl2.SDL_CreateTexture(
+            renderer,
+            sdl2.SDL_PIXELFORMAT_RGB24,
+            sdl2.SDL_TEXTUREACCESS_STREAMING,
+            self.w, self.h)
+        
+        event = sdl2.SDL_Event()
+        running = True
+        while running:
+            while sdl2.SDL_PollEvent(ctypes.byref(event)):
+                if event.type == sdl2.SDL_QUIT:
+                    running = False
+                elif event.type == sdl2.SDL_KEYDOWN and \
+                        event.key.keysym.sym == sdl2.SDLK_ESCAPE:
+                    running = False
+            
+            keystate = sdl2.SDL_GetKeyboardState(None)
+            self._prev = self._btn
+            self._btn = [bool(keystate[sc]) for sc in _SCANCODES]
+
+            update()
+            draw()
+
+            rgb = self.to_rgb()
+            sdl2.SDL_UpdateTexture(texture, None, ctypes.c_void_p(rgb.ctypes.data), self.w * 3)
+            sdl2.SDL_RenderClear(renderer)
+            sdl2.SDL_RenderCopy(renderer, texture, None, None)
+            sdl2.SDL_RenderPresent(renderer)
+            sdl2.SDL_Delay(16)
+
+        sdl2.SDL_DestroyTexture(texture)
+        sdl2.SDL_DestroyRenderer(renderer)
+        sdl2.SDL_DestroyWindow(window)
+        sdl2.SDL_Quit()
+
+        
