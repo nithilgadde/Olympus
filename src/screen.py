@@ -1,6 +1,7 @@
 import numpy as np
 from palette import PALETTE
 import ctypes, sdl2
+from font import FONT
 
 LEFT, RIGHT, UP, DOWN, O, X = 0, 1, 2, 3, 4, 5
 
@@ -136,6 +137,19 @@ class Screen:
         dst = self.fb[y + sy0:y + sy1, x + sx0:x + sx1]
         mask = sub != 255
         dst[mask] = sub[mask]
+
+    def text(self, s, x, y, color):
+        cx = x
+        for ch in str(s).upper():
+            glyph = FONT.get(ch)
+            if glyph is not None:
+                for j in range(5):
+                    row = glyph[j]
+                    for i in range(3):
+                        if row[i] != '.':
+                            self.pset(cx + i, y + j, color)
+            cx += 4
+        return cx
     
     def run(self, update, draw, scale=5, title=b"Olympus"):
         sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO)

@@ -51,5 +51,3 @@ SMILEY = make_sprite([
       ".aaaaaa.",
       "..aaaa..",
 ])
-
-
