@@ -1,14 +1,9 @@
-import os
 from palette import DARKBLUE
 from screen import Screen, LEFT, RIGHT, UP, DOWN
-from sprites import load_sprite
-
-HERE = os.path.dirname(__file__)
+from sprites import FISH
 
 screen = Screen(128, 128)
-hero = load_sprite(os.path.join(HERE, "assets", "hero.png"))
-
-px, py = 56, 56
+px, py = 60, 60
 facing_left = False
 
 
@@ -18,12 +13,12 @@ def update():
     if screen.btn(RIGHT): px += 2; facing_left = False
     if screen.btn(UP):    py -= 2
     if screen.btn(DOWN):  py += 2
-    px = max(0, min(128 - 16, px))
-    py = max(0, min(128 - 16, py))
+    px = max(0, min(128 - 8, px))
+    py = max(0, min(128 - 8, py))
 
 
 def draw():
     screen.cls(DARKBLUE)
-    screen.spr(hero, px, py, flip_x=facing_left)
+    screen.spr(FISH, px, py, flip_x=facing_left)
 
 screen.run(update, draw)

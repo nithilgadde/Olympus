@@ -116,6 +116,27 @@ class Screen:
     def btnp(self, i):
         return self._btn[i] and not self._prev[i]
     
+    def spr(self, sprite, x, y, flip_x=False, flip_y=False):
+        s = sprite
+        if flip_x:
+            s = s[:, ::-1]
+        if flip_y:
+            s = s[::-1, :]
+        sh, sw = s.shape
+        x, y = int(x), int(y)
+
+        sx0 = max(0, -x)
+        sy0 = max(0, -y)
+        sx1 = min(sw, self.w - x)
+        sy1 = min(sh, self.h - y)
+        if sx0 >= sx1 or sy0 >= sy1:
+            return
+        
+        sub = s[sy0:sy1, sx0:sx1]
+        dst = self.fb[y + sy0:y + sy1, x + sx0:x + sx1]
+        mask = sub != 255
+        dst[mask] = sub[mask]
+    
     def run(self, update, draw, scale=5, title=b"Olympus"):
         sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO)
         win_w, win_h = self.w * scale, self.h * scale
