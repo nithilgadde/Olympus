@@ -1,8 +1,8 @@
 import ctypes, sdl2
 import numpy as np
 import math
-from palette import BLACK, RED, YELLOW, GREEN, WHITE
-from screen import Screen, LEFT, RIGHT, UP, DOWN, O, X
+from olympus import BLACK, RED, YELLOW, GREEN, WHITE
+from olympus import Screen, LEFT, RIGHT, UP, DOWN, O, X
 
 screen = Screen(128, 128)
 

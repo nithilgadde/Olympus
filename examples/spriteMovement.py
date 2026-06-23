@@ -1,6 +1,17 @@
-from palette import DARKBLUE
-from screen import Screen, LEFT, RIGHT, UP, DOWN
-from sprites import FISH
+from olympus import DARKBLUE
+from olympus import Screen, LEFT, RIGHT, UP, DOWN
+from olympus import make_sprite
+
+FISH = make_sprite([
+      "........",
+      "....999.",
+      "9..9999.",
+      "9999979.",
+      "9999999.",
+      "9..9999.",
+      "....999.",
+      "........",
+])
 
 screen = Screen(128, 128)
 px, py = 60, 60

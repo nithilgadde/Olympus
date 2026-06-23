@@ -1,7 +1,7 @@
 import os
-from palette import DARKBLUE, YELLOW, WHITE, RED
-from screen import Screen, LEFT, RIGHT, O
-from sprites import load_sprite
+from olympus import DARKBLUE, YELLOW, WHITE, RED
+from olympus import Screen, LEFT, RIGHT, O
+from olympus import load_sprite
 
 HERE = os.path.dirname(__file__)
 

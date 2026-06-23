@@ -1,7 +1,7 @@
 import numpy as np
-from palette import PALETTE
+from .palette import PALETTE
 import ctypes, sdl2
-from font import FONT
+from .font import FONT
 
 LEFT, RIGHT, UP, DOWN, O, X = 0, 1, 2, 3, 4, 5
 

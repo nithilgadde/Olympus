@@ -1,13 +1,50 @@
-from palette import DARKBLUE
-from screen import Screen, LEFT, RIGHT, UP, DOWN
-from sprites import HERO_IDLE, HERO_WALK
-from anim import Anim
+from olympus import DARKBLUE
+from olympus import Screen, LEFT, RIGHT, UP, DOWN
+from olympus import make_sprite
+from olympus import Anim
+
+HERO_WALK = [
+      make_sprite([
+          "..bbbb..",
+          ".bbbbbb.",
+          ".b7bb7b.",
+          ".bbbbbb.",
+          ".bbbbbb.",
+          "..bbbb..",
+          "..bb.b..",
+          ".3...3..",
+      ]),
+      make_sprite([
+          "..bbbb..",
+          ".bbbbbb.",
+          ".b7bb7b.",
+          ".bbbbbb.",
+          ".bbbbbb.",
+          "..bbbb..",
+          "..b.bb..",
+          "..3...3.",
+      ]),
+  ]
+
+HERO_IDLE = make_sprite([
+      "..bbbb..",
+      ".bbbbbb.",
+      ".b7bb7b.",
+      ".bbbbbb.",
+      ".bbbbbb.",
+      "..bbbb..",
+      "..b..b..",
+      "..3..3..",
+  ])
+
 
 screen = Screen(128, 128)
 px, py = 60, 60
 facing_left = False
 moving = False
 walk = Anim(HERO_WALK, speed=6)
+
+
 
 
 def update():

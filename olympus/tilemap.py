@@ -1,4 +1,4 @@
-from sprites import make_sprite
+from .sprites import make_sprite
 
 TILE = 8
 

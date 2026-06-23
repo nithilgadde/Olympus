@@ -1,6 +1,6 @@
-from palette import BLACK, WHITE, RED
-from screen import Screen, LEFT, RIGHT, UP, DOWN
-from tilemap import Tilemap, TILES, SOLID, TILE
+from olympus import BLACK, WHITE, RED
+from olympus import Screen, LEFT, RIGHT, UP, DOWN
+from olympus.tilemap import Tilemap, TILES, SOLID, TILE
 
   # the whole level, drawn as text. W = wall, C = coin, . = empty
 LEVEL = [

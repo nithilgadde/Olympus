@@ -1,7 +1,7 @@
 import os
-from palette import BLACK, WHITE
-from screen import Screen
-from sound import Sound, load_wav
+from olympus import BLACK, WHITE
+from olympus import Screen
+from olympus import Sound, load_wav
 
 HERE = os.path.dirname(__file__)
 

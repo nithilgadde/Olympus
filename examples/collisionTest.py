@@ -1,6 +1,6 @@
-from palette import BLACK, WHITE, RED, YELLOW, BLUE
-from screen import Screen, LEFT, RIGHT, UP, DOWN
-from collide import overlap, hits_any
+from olympus import BLACK, WHITE, RED, YELLOW, BLUE
+from olympus import Screen, LEFT, RIGHT, UP, DOWN
+from olympus import overlap, hits_any
 
 screen = Screen(128, 128)
 

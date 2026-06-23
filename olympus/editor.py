@@ -1,7 +1,7 @@
 import ctypes 
 import sdl2
 import numpy as np
-from screen import Screen
+from .screen import Screen
 
 VW = VH = 128
 SCALE = 5
