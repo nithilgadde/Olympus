@@ -51,3 +51,37 @@ SMILEY = make_sprite([
       ".aaaaaa.",
       "..aaaa..",
 ])
+
+HERO_IDLE = make_sprite([
+      "..bbbb..",
+      ".bbbbbb.",
+      ".b7bb7b.",
+      ".bbbbbb.",
+      ".bbbbbb.",
+      "..bbbb..",
+      "..b..b..",
+      "..3..3..",
+  ])
+
+HERO_WALK = [
+      make_sprite([
+          "..bbbb..",
+          ".bbbbbb.",
+          ".b7bb7b.",
+          ".bbbbbb.",
+          ".bbbbbb.",
+          "..bbbb..",
+          "..bb.b..",
+          ".3...3..",
+      ]),
+      make_sprite([
+          "..bbbb..",
+          ".bbbbbb.",
+          ".b7bb7b.",
+          ".bbbbbb.",
+          ".bbbbbb.",
+          "..bbbb..",
+          "..b.bb..",
+          "..3...3.",
+      ]),
+  ]

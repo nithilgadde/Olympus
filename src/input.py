@@ -28,4 +28,3 @@ def draw():
     screen.rect(px, py, px + 7, py + 7, WHITE)
 
 screen.run(update, draw)
-

@@ -197,5 +197,3 @@ class Screen:
         sdl2.SDL_DestroyRenderer(renderer)
         sdl2.SDL_DestroyWindow(window)
         sdl2.SDL_Quit()
-
-        
