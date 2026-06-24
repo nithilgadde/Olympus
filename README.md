@@ -7,8 +7,8 @@ A from-scratch game engine for Python. Build tiny pixel games on a 128×128 scre
 
 ## Try it
 
-```bash
-             #
+```
+pip install olympus-engine
 ```
 
 ## Quick start
@@ -79,4 +79,4 @@ A couple of decisions worth calling out:
 
 Built with [PySDL2](https://github.com/py-sdl/py-sdl2) (windowing, input, audio output), [NumPy](https://numpy.org/) (the framebuffer and rasterization), and [Pillow](https://python-pillow.org/) (PNG decoding). Inspired by [PICO-8](https://www.lexaloffle.com/pico-8.php) and the fantasy-console idea.
 
-Created by [Your Name] · MIT License
+Created by Nithil Gadde (@nithilgadde) · MIT License
