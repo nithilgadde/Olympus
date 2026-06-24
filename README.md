@@ -46,7 +46,13 @@ You write `update` (game logic) and `draw` (pixels); the engine runs them 60 tim
 - **Animation, tilemaps, and AABB collision** — cycle frames for walk cycles, build levels as grids of characters, and check what's solid.
 - **A built-in pixel font** for scores, labels, and menus.
 - **Sound**: square-wave synthesis for retro blips, plus loading and playing your own `.wav` files.
-- **A built-in sprite editor** (`olympus-editor`) — draw with the mouse and export straight to engine code, with undo, save/load, and onion-skinning.
+- **A built-in sprite editor** — draw with the mouse and export straight to engine code, with undo, save/load, and onion-skinning.
+
+
+To run the sprite editor, run this command in the terminal:
+```
+olympus-editor
+```
 
 ## Running locally
 
