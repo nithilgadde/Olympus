@@ -5,14 +5,10 @@ A from-scratch game engine for Python. Build tiny pixel games on a 128×128 scre
 <img width="628" height="664" alt="CleanShot 2026-06-22 at 21 23 02" src="https://github.com/user-attachments/assets/c13f556d-5366-4835-88db-5f09cf761020" />
 
 
-> _Replace the image above with a real GIF of a game (or the sprite editor) running. The README needs one moving picture near the top — it's the single biggest thing that makes someone keep reading._
-
 ## Try it
 
 ```bash
-pip install -e .
-python examples/demo.py     # walk a sprite around, press Z for a beep
-olympus-editor              # draw sprites with the mouse, export to code
+             #
 ```
 
 ## Quick start
