@@ -38,6 +38,8 @@ screen.run(update, draw)
 
 You write `update` (game logic) and `draw` (pixels); the engine runs them 60 times a second and handles the window, input, and rendering.
 
+# You can check out the documentation in the Wiki Tab!
+
 ## Features
 
 - **128×128 indexed framebuffer** with a fixed 16-color palette — the classic fantasy-console look.
